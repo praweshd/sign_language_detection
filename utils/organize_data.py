@@ -8,10 +8,10 @@ f = os.listdir(root)
 print(f)
 
 
-for person in f:
+labels = []
+names =[]
 
-	labels = []
-	names =[]
+for person in f:
 
 	dest_path = os.path.join('/home/ecbm6040', 'dataset')
 	if not os.path.exists(dest_path):
@@ -29,7 +29,7 @@ for person in f:
 	    for x in b:
 	        if(x.split('_')[0]=='color'):
 	            labels.append(x.split('_')[1])
-	            names.append(x)
+	            names.append(person + '_' + x)
 
 	            # print(x)
 	            old_path = os.path.join(path, x)
@@ -38,9 +38,8 @@ for person in f:
 	            shutil.move(old_path, new_im_path)
 	            os.rename(new_im_path, os.path.join(dest_path, person + '_' + x ))
 	    count = count+1
-	cs = [names,labels]
 
-	file_name = '/home/ecbm6040/dataset/' + person + '.csv'
-	with open(file_name,'w') as f1:
-	    writer = csv.writer(f1)
-	    writer.writerows(zip(names, labels))
+file_name = '/home/ecbm6040/dataset/labels.csv'
+with open(file_name,'w') as f1:
+    writer = csv.writer(f1)
+    writer.writerows(zip(names, labels))
