@@ -13,7 +13,7 @@ for person in f:
 	labels = []
 	names =[]
 
-	dest_path = os.path.join('/home/ecbm6040', 'dataset', person)
+	dest_path = os.path.join('/home/ecbm6040', 'dataset')
 	if not os.path.exists(dest_path):
 	    os.makedirs(dest_path)
 	
@@ -28,7 +28,7 @@ for person in f:
 	    
 	    for x in b:
 	        if(x.split('_')[0]=='color'):
-	            labels.append(count)
+	            labels.append(x.split('_')[1])
 	            names.append(x)
 
 	            # print(x)
@@ -36,6 +36,7 @@ for person in f:
 	            new_im_path = os.path.join(dest_path, x)
 	            #print(old_path,new_im_path)
 	            shutil.move(old_path, new_im_path)
+	            os.rename(new_im_path, os.path.join(dest_path, person + '_' + x ))
 	    count = count+1
 	cs = [names,labels]
 
