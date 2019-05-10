@@ -65,7 +65,7 @@ for epoch in range(num_epochs):
 		
 		# Forward Propogation
 		prediction = net(image)
-		print(prediction.size)
+		print(prediction.size())
 		
 		# Computng the loss
 		loss = criterion(prediction, y)
