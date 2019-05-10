@@ -54,7 +54,7 @@ for epoch in range(num_epochs):
 	running_loss = 0.0
 	
 	# Loop over the entire training dataset
-	for i, batch in eumerate(train_dataloader):
+	for i, batch in enumerate(train_dataloader):
 
 
 		# Zero the parameter gradients
