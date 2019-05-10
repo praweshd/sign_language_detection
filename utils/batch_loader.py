@@ -5,6 +5,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from skimage import io, transform
 import os
+import numpy as np 
 
 class ToTensor(object):
     """Convert ndarrays in sample to Tensors."""
