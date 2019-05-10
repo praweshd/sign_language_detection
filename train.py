@@ -41,7 +41,7 @@ train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/train.cs
 val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/val.csv', root_dir='/home/ecbm6040/dataset_final/val/')
 
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
-val_dataloader = DataLoader(val_dataset, batch_size=5000, shuffle=True, num_workers=4)
+val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 
 # loop over the dataset multiple times
@@ -91,9 +91,8 @@ for epoch in range(num_epochs):
 	torch.save(net, 'Network_1.pth')
 	
 	net.eval()
-	# Ensuring that the model is in the training mode
-	device = torch.device("cpu")
 
+	num_correct = 0
 	for j, val_batch in enumerate(val_dataloader):
 		net.to(device)
 
@@ -105,11 +104,12 @@ for epoch in range(num_epochs):
 
 		prediction = output.argmax(dim = 1).reshape((-1))
 
-		# Compute accuracy
-		acc = 100 * torch.sum(prediction == y) / 5000
-		print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
+		num_correct += torch.sum(prediction == y) 
+	
+	acc = 100 * num_correct / 5000
+	print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
 
-	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+
 			
 print('Finished Training')
 
