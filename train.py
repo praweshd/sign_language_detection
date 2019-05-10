@@ -90,24 +90,24 @@ for epoch in range(num_epochs):
 	# Saving the model
 	torch.save(net, 'Network_1.pth')
 	
-	net.eval()
+	# net.eval()
 
-	num_correct = 0
-	for j, val_batch in enumerate(val_dataloader):
-		net.to(device)
+	# num_correct = 0
+	# for j, val_batch in enumerate(val_dataloader):
+	# 	net.to(device)
 
-		# Moving the mini-batch onto the GPU
-		image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
+	# 	# Moving the mini-batch onto the GPU
+	# 	image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
 		
-		# Forward Propogation
-		output = net(image)
+	# 	# Forward Propogation
+	# 	output = net(image)
 
-		prediction = output.argmax(dim = 1).reshape((-1))
+	# 	prediction = output.argmax(dim = 1).reshape((-1))
 
-		num_correct += torch.sum(prediction == y) 
+	# 	num_correct += torch.sum(prediction == y) 
 	
-	acc = 100 * num_correct / 5000
-	print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
+	# acc = 100 * num_correct / 5000
+	# print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
 
 
 			
