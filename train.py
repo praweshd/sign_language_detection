@@ -56,7 +56,6 @@ for epoch in range(num_epochs):
 	# Loop over the entire training dataset
 	for i, batch in enumerate(train_dataloader):
 
-		print(i)
 		# Zero the parameter gradients
 		optimizer.zero_grad()
 		 
