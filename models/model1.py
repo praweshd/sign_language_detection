@@ -36,12 +36,12 @@ class Net(nn.Module):
 
 		self.fc3 = nn.Linear(512, 24)
 
-		self.out_act = nn.Softmax()
+		self.out_act = nn.Softmax(dim=1)
 
 		self.pool = nn.MaxPool2d(2, 2)
 
 	def forward(self, x):
-		
+
 		x = F.relu(self.conv1_bn(self.conv1(x)))
 		x = self.pool(F.relu(self.conv2_bn(self.conv2(x))))
 
