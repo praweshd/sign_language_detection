@@ -21,7 +21,7 @@ class ToTensor(object):
         image = np.float32(image) / 255
 
         return {'image': torch.from_numpy(image),
-                'labels': torch.from_numpy(labels.astype(int64))}
+                'labels': torch.from_numpy(np.int64(labels))}
 
 class dataset_pipeline(Dataset):
 
