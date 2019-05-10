@@ -66,10 +66,11 @@ for epoch in range(num_epochs):
 		y = y.resize((batch_size))
 
 		print(y.size())
+		print(y)
 		
 		# Forward Propogation
 		output = net(image)
-		
+		print(output.size())
 		
 		# Computng the loss
 		loss = criterion(output, y)
