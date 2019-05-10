@@ -12,19 +12,19 @@ class Net(nn.Module):
 		self.conv2 = nn.Conv2d(64, 64, 3)
 		self.conv2_bn = nn.BatchNorm2d(64)
 
-		self.conv3 = nn.Conv2d(64, 128)
+		self.conv3 = nn.Conv2d(64, 128, 3)
 		self.conv3_bn = nn.BatchNorm2d(128)
-		self.conv4 = nn.Conv2d(128, 128)
+		self.conv4 = nn.Conv2d(128, 128, 3)
 		self.conv4_bn = nn.Conv2d(128)
 
-		self.conv5 = nn.Conv2d(128, 256)
+		self.conv5 = nn.Conv2d(128, 256, 3)
 		self.conv5_bn = nn.BatchNorm2d(256)
-		self.conv6 = nn.Conv2d(256, 256)
+		self.conv6 = nn.Conv2d(256, 256, 3)
 		self.conv6_bn = nn.BatchNorm2d(256)
 
-		self.conv7 = nn.Conv2d(256, 512)
+		self.conv7 = nn.Conv2d(256, 512, 3)
 		self.conv7_bn = nn.BatchNorm2d(512)
-		self.conv8 = nn.Conv2d(512, 512)
+		self.conv8 = nn.Conv2d(512, 512, 3)
 		self.conv8_bn = nn.BatchNrom2d(512)
 
 		self.fc1 = nn.Linear(14*12*512, 4096)
