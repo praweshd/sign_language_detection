@@ -64,8 +64,8 @@ for epoch in range(num_epochs):
 		image, y = batch['image'].to(device), batch['labels'].to(device)
 		
 		# Forward Propogation
-		prediction = net(image)
-		print(prediction.size())
+		output = net(image)
+		prediction = output.argmax(axis = 1)
 		
 		# Computng the loss
 		loss = criterion(prediction, y)
