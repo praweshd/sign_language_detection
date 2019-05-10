@@ -38,10 +38,10 @@ batch_size = 20
 training_loss = []
 
 train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/train.csv', root_dir='/home/ecbm6040/dataset_final/train/')
-val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/val.csv', root_dir='/home/ecbm6040/dataset_final/val/')
+# val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/val.csv', root_dir='/home/ecbm6040/dataset_final/val/')
 
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
-val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
+# val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 
 # loop over the dataset multiple times
@@ -56,7 +56,7 @@ for epoch in range(num_epochs):
 	# Loop over the entire training dataset
 	for i, batch in enumerate(train_dataloader):
 
-
+		print(i)
 		# Zero the parameter gradients
 		optimizer.zero_grad()
 		 
@@ -85,8 +85,6 @@ for epoch in range(num_epochs):
 			training_loss.append(running_loss / 20)
 			running_loss = 0.0
 
-		break
-
 	# Saving the model
 	torch.save(net, 'Network_1.pth')
 	
@@ -114,4 +112,4 @@ for epoch in range(num_epochs):
 print('Finished Training')
 
 # Plotting the loss curve
-plt.plot(training_loss)
+# plt.plot(training_loss)
