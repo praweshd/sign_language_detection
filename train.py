@@ -85,6 +85,8 @@ for epoch in range(num_epochs):
 			training_loss.append(running_loss / 20)
 			running_loss = 0.0
 
+		break
+
 	# Saving the model
 	torch.save(net, 'Network_1.pth')
 	
