@@ -9,7 +9,7 @@ class Net(nn.Module):
 		
 		self.conv1 = nn.Conv2d(3, 64, 3)
 		self.conv1_bn = nn.BatchNorm2d(64)
-		self.conv2 = nn.conv2d(64, 64, 3)
+		self.conv2 = nn.Conv2d(64, 64, 3)
 		self.conv2_bn = nn.BatchNorm2d(64)
 
 		self.conv3 = nn.Conv2d(64, 128)
@@ -57,10 +57,3 @@ class Net(nn.Module):
 		x = F.relu(self.fc1_bn(self.fc1(x)))
 		x = F.relu(self.fc2_bn(self.fc2(x)))
 		x = self.out_act(self.fc3(x))
-
-
-
-
-
-
-
