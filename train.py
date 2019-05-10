@@ -19,7 +19,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print('Device being used =', device)
 
 # Transferring the network onto the GPU
-net.to(device)
+# net.to(device)
 
 # Ensuring that the model is in the training mode
 net.train()
@@ -31,7 +31,7 @@ criterion = nn.CrossEntropyLoss()    # This is the Cross Entropy Loss Function
 optimizer = optim.Adam(net.parameters(), lr=1e-4, betas=(0.9, 0.999), eps=1e-08)    # Adaptive Momentum Optimizer
 
 # Hyper-Parameters
-num_epochs = 1
+num_epochs = 20
 batch_size = 20
 
 # Stores the loss through out the entire training
@@ -61,7 +61,8 @@ for epoch in range(num_epochs):
 		optimizer.zero_grad()
 		 
 		# Moving the mini-batch onto the GPU
-		image, y = batch['image'].cuda(), batch['labels'].cuda()
+		# image, y = batch['image'].cuda(), batch['labels'].cuda()
+		image, y = batch['image'], batch['labels']
 		y = y.resize((batch_size))
 
 		print(y.size())
