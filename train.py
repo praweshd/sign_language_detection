@@ -19,7 +19,7 @@ device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print('Device being used =', device)
 
 # Transferring the network onto the GPU
-# net.to(device)
+net.to(device)
 
 # Ensuring that the model is in the training mode
 net.train()
@@ -61,8 +61,8 @@ for epoch in range(num_epochs):
 		optimizer.zero_grad()
 		 
 		# Moving the mini-batch onto the GPU
-		# image, y = batch['image'].cuda(), batch['labels'].cuda()
-		image, y = batch['image'], batch['labels']
+		image, y = batch['image'].cuda(), batch['labels'].cuda()
+		# image, y = batch['image'], batch['labels']
 		y = y.resize((batch_size))
 
 		print(y.size())
