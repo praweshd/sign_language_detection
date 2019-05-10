@@ -16,6 +16,7 @@ class ToTensor(object):
         # swap color axis because
         # numpy image: H x W x C
         # torch image: C X H X W
+        image = image[:, :, 0:3]
         image = image.transpose((2, 0, 1))
         return {'image': torch.from_numpy(image),
                 'labels': torch.from_numpy(labels)}
