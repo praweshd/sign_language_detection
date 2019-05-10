@@ -61,8 +61,9 @@ for epoch in range(num_epochs):
 		optimizer.zero_grad()
 		 
 		# Moving the mini-batch onto the GPU
-		image, y = batch['image'].to(device), batch['labels'].to(device)
+		image, y = batch['image'].cuda(), batch['labels'].cuda()
 		y = y.resize((batch_size))
+
 		print(y.size())
 		
 		# Forward Propogation
