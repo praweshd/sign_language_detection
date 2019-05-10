@@ -65,12 +65,10 @@ for epoch in range(num_epochs):
 		
 		# Forward Propogation
 		output = net(image)
-		prediction = output.argmax(dim = 1).reshape((-1, 1))
-		print(prediction.size())
-		print(y.size())
+		
 		
 		# Computng the loss
-		loss = criterion(prediction, y)
+		loss = criterion(output, y)
 		   
 		# Back Propogation    
 		loss.backward()
@@ -78,6 +76,8 @@ for epoch in range(num_epochs):
 		# Updating the network parameters
 		optimizer.step()
 		
+		# prediction = output.argmax(dim = 1).reshape((-1, 1))
+
 		# Print Loss
 		running_loss += loss.item()
 
