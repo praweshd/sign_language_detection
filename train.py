@@ -32,7 +32,7 @@ optimizer = optim.Adam(net.parameters(), lr=1e-4, betas=(0.9, 0.999), eps=1e-08)
 
 # Hyper-Parameters
 num_epochs = 20
-batch_size = 20
+batch_size = 200
 
 # Stores the loss through out the entire training
 training_loss = []
@@ -64,13 +64,9 @@ for epoch in range(num_epochs):
 		image, y = batch['image'].cuda(), batch['labels'].cuda()
 		# image, y = batch['image'], batch['labels']
 		y = y.resize((batch_size))
-
-		print(y.size())
-		print(y)
 		
 		# Forward Propogation
 		output = net(image)
-		print(output.size())
 		
 		# Computng the loss
 		loss = criterion(output, y)
