@@ -31,7 +31,7 @@ criterion = nn.CrossEntropyLoss()    # This is the Cross Entropy Loss Function
 optimizer = optim.Adam(net.parameters(), lr=1e-4, betas=(0.9, 0.999), eps=1e-08)    # Adaptive Momentum Optimizer
 
 # Hyper-Parameters
-num_epochs = 20
+num_epochs = 1
 batch_size = 20
 
 # Stores the loss through out the entire training
