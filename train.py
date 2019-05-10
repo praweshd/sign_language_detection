@@ -62,7 +62,7 @@ for epoch in range(num_epochs):
 		 
 		# Moving the mini-batch onto the GPU
 		image, y = batch['image'].to(device), batch['labels'].to(device)
-
+		y = y.resize((batch_size))
 		print(y.size())
 		
 		# Forward Propogation
