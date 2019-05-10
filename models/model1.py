@@ -27,7 +27,8 @@ class Net(nn.Module):
 		self.conv8 = nn.Conv2d(512, 512, 3)
 		self.conv8_bn = nn.BatchNorm2d(512)
 
-		self.fc1 = nn.Linear(14*12*512, 4096)
+		# self.fc1 = nn.Linear(14*12*512, 4096)
+		self.fc1 = nn.Linear(13*11*512, 4096)
 		self.fc1_bn = nn.BatchNorm1d(4096)
 
 		self.fc2 = nn.Linear(4096, 512)
@@ -52,7 +53,9 @@ class Net(nn.Module):
 		x = F.relu(self.conv7_bn(self.conv7(x)))
 		x = self.pool(F.relu(self.conv8_bn(self.conv8(x))))
 
-		x = x.view(-1, 14*12*512)
+		# x = x.view(-1, 14*12*512)
+		x = x.view(-1, 13*11*512)
+		self.fc1 = nn.Linear(13*11*512, 4096)
 
 		x = F.relu(self.fc1_bn(self.fc1(x)))
 		x = F.relu(self.fc2_bn(self.fc2(x)))
