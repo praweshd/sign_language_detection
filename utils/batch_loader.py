@@ -19,7 +19,7 @@ class ToTensor(object):
         image = image[:, :, 0:3]
         image = image.transpose((2, 0, 1))
         image = np.float32(image) / 255
-        
+
         return {'image': torch.from_numpy(image),
                 'labels': torch.from_numpy(labels)}
 

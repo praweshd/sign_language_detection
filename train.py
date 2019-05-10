@@ -65,7 +65,7 @@ for epoch in range(num_epochs):
 		
 		# Forward Propogation
 		output = net(image)
-		prediction = output.argmax(dim = 1)
+		prediction = output.argmax(dim = 1).reshape((-1, 1))
 		print(prediction.size())
 		print(y.size())
 		
