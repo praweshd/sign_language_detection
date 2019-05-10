@@ -86,20 +86,20 @@ for epoch in range(num_epochs):
 	# Saving the model
 	torch.save(net, 'Network_1.pth')
 	
-	# Ensuring that the model is in the training mode
-	net.eval()
+	# # Ensuring that the model is in the training mode
+	# net.eval()
 
-	for j, val_batch in enumerate(val_dataloader):
-		# Moving the mini-batch onto the GPU
-		image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
+	# for j, val_batch in enumerate(val_dataloader):
+	# 	# Moving the mini-batch onto the GPU
+	# 	image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
 		
-		# Forward Propogation
-		prediction = net(image)
+	# 	# Forward Propogation
+	# 	prediction = net(image)
 
-		# Compute accuracy
-		acc = 100 * torch.sum(prediction == y) / 5000
+	# 	# Compute accuracy
+	# 	acc = 100 * torch.sum(prediction == y) / 5000
 
-		print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
+	# 	print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
 
 			
 print('Finished Training')
