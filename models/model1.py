@@ -55,7 +55,6 @@ class Net(nn.Module):
 
 		# x = x.view(-1, 14*12*512)
 		x = x.view(-1, 13*11*512)
-		self.fc1 = nn.Linear(13*11*512, 4096)
 
 		x = F.relu(self.fc1_bn(self.fc1(x)))
 		x = F.relu(self.fc2_bn(self.fc2(x)))
