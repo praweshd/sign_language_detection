@@ -32,7 +32,7 @@ optimizer = optim.Adam(net.parameters(), lr=1e-4, betas=(0.9, 0.999), eps=1e-08)
 
 # Hyper-Parameters
 num_epochs = 20
-batch_size = 100
+batch_size = 20
 
 # Stores the loss through out the entire training
 training_loss = []
@@ -41,7 +41,7 @@ train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/train.cs
 val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/val.csv', root_dir='/home/ecbm6040/dataset_final/val/')
 
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
-val_dataloader = DataLoader(val_dataset, batch_size=20, shuffle=True, num_workers=4)
+val_dataloader = DataLoader(val_dataset, batch_size=5000, shuffle=True, num_workers=4)
 
 
 # loop over the dataset multiple times
@@ -76,8 +76,6 @@ for epoch in range(num_epochs):
 		
 		# Updating the network parameters
 		optimizer.step()
-		
-		# prediction = output.argmax(dim = 1).reshape((-1, 1))
 
 		# Print Loss
 		running_loss += loss.item()
@@ -90,21 +88,26 @@ for epoch in range(num_epochs):
 	# Saving the model
 	torch.save(net, 'Network_1.pth')
 	
-	# # Ensuring that the model is in the training mode
-	# net.eval()
+	net.eval()
+	# Ensuring that the model is in the training mode
+	device = torch.device("cpu")
 
-	# for j, val_batch in enumerate(val_dataloader):
-	# 	# Moving the mini-batch onto the GPU
-	# 	image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
+	for j, val_batch in enumerate(val_dataloader):
+		net.to(device)
+
+		# Moving the mini-batch onto the GPU
+		image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
 		
-	# 	# Forward Propogation
-	# 	prediction = net(image)
+		# Forward Propogation
+		output = net(image)
 
-	# 	# Compute accuracy
-	# 	acc = 100 * torch.sum(prediction == y) / 5000
+		prediction = output.argmax(dim = 1).reshape((-1))
 
-	# 	print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
+		# Compute accuracy
+		acc = 100 * torch.sum(prediction == y) / 5000
+		print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
 
+	device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 			
 print('Finished Training')
 
