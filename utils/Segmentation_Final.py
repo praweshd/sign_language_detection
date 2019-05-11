@@ -84,6 +84,7 @@ for filename in dirs: #glob.glob(path):
     # Replace "Hands" with directory where you want to save your images
     fig1.savefig('/home/ecbm6040/dataset_final/train_segmented/{}'.format(filename))
     plt.tight_layout()
+    plt.close()
 
 
 # In[ ]:
