@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[3]:
+# In[5]:
 
 
 import cv2
@@ -56,34 +56,23 @@ for filename in glob.glob("*.png"):
 
     # Image shape
     m = im1.shape[0]; n = im1.shape[1]; k = im1.shape[2]
-    print(m, n, k)
-
+    #print(m, n, k)
 
     F1 = im1[:,:,0]
     F2 = im1[:,:,1]
     F3 = im1[:,:,2]
 
     D1 = thresh_1(F1,F2,F3,r_th,g_th,b_th)
-    print('D1 shape is {}'.format(D1.shape))
-
     D2 = thresh_2(im1, 15/255)
-    print('D2 shape is {}'.format(D2.shape))
-
     D3 = thresh_3(im1, 15/255)
-    print('D3 shape is {}'.format(D3.shape))
-
     D4 = thresh_4(im1)
-    print('D4 shape is {}'.format(D4.shape))
-
     D5 = thresh_5(im1)
-    print('D5 shape is {}'.format(D5.shape))
 
-
+    #Perform multiplication
     E1 = np.multiply(D1,D2)
     E2 = np.multiply(E1,D3)
     E3 = np.multiply(E2,D4)
     E4 = np.multiply(E3,D5)
-
 
     fig1 = plt.gcf()
     fig1, axarr = plt.subplots(1,2)
@@ -91,6 +80,8 @@ for filename in glob.glob("*.png"):
     axarr[0].set_title('Original Image')
     axarr[1].imshow(E4,cmap='Greys_r')
     axarr[1].set_title('Thresholded Image')
+    
+    # Replace "Hands" with directory where you want to save your images
     fig1.savefig('Hands/Post_{}.png'.format(filename))
     plt.tight_layout()
 
