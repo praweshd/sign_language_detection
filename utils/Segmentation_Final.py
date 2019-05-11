@@ -1,5 +1,5 @@
 #May/11/2019
-
+from tqdm import tqdm
 import cv2
 import matplotlib.pyplot as plt
 import numpy as np
