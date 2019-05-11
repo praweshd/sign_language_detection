@@ -10,6 +10,7 @@ import numpy as np
 import PIL
 from PIL import Image
 import glob
+import os
 
 def thresh_1(R,G, B, r_th, g_th, b_th):
     R1 = R[:] > r_th
