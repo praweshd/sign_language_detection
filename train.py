@@ -86,8 +86,8 @@ for epoch in range(num_epochs):
 		prediction = output.argmax(dim = 1).reshape((-1))
 		num_correct += torch.sum(prediction == y) 
 
-		print('y: {}'.format(y.item()))
-		print('pred: {}'.format(prediction.item()))
+		print('y: {}'.format(y))
+		print('pred: {}'.format(prediction))
 
 		print(num_correct.item())
 
