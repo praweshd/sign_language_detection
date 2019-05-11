@@ -51,13 +51,15 @@ num_correct = 0.0
 # loop over the dataset multiple times
 for epoch in range(num_epochs):  
 	
+	print("------------------------------------------------------------------")
+
 	# Ensuring that the model is in the training mode
 	net.train()
 
 	# Stores the loss for an entire mini-batch
 	running_loss = 0.0
 	
-	# Loop over the entire training dataset
+	# Loop over the entire training datasets
 	for i, batch in enumerate(train_dataloader):
 
 		# Zero the parameter gradients
@@ -111,6 +113,7 @@ for epoch in range(num_epochs):
 		
 	# 	# Forward Propogation
 	# 	output = net(image)
+
 loss_file = open('./pretrained_models/run1/loss.txt', '+w') # open a file in write mode
 for item in training_loss:    # iterate over the list items
    loss_file.write(str(item) + '\n') # write to the file
