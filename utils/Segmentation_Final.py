@@ -1,8 +1,4 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[5]:
-
+#May/11/2019
 
 import cv2
 import matplotlib.pyplot as plt
@@ -86,7 +82,7 @@ for filename in dirs: #glob.glob(path):
     axarr[1].set_title('Thresholded Image')
     
     # Replace "Hands" with directory where you want to save your images
-    fig1.savefig('/home/ecbm6040/dataset_final/train_segmented/{}.png'.format(filename))
+    fig1.savefig('/home/ecbm6040/dataset_final/train_segmented/{}'.format(filename))
     plt.tight_layout()
 
 
