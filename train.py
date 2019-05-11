@@ -111,12 +111,12 @@ for epoch in range(num_epochs):
 		
 	# 	# Forward Propogation
 	# 	output = net(image)
-loss_file = open('loss.txt', '+w') # open a file in write mode
+loss_file = open('./pretrained_models/run1/loss.txt', '+w') # open a file in write mode
 for item in training_loss:    # iterate over the list items
    loss_file.write(str(item) + '\n') # write to the file
 loss_file.close()   # close the file 
 
-acc_file = open('acc.txt', '+w') # open a file in write mode
+acc_file = open('./pretrained_models/run1/acc.txt', '+w') # open a file in write mode
 for item in training_acc:    # iterate over the list items
    acc_file.write(str(item) + '\n') # write to the file
 acc_file.close()   # close the file 
