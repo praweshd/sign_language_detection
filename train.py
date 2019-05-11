@@ -43,6 +43,8 @@ train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/train.cs
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 # val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
+# To compute the accuracy
+num_correct = 0
 
 # loop over the dataset multiple times
 for epoch in range(num_epochs):  
@@ -79,10 +81,19 @@ for epoch in range(num_epochs):
 		# Print Loss
 		running_loss += loss.item()
 
+	prediction = output.argmax(dim = 1).reshape((-1))
+	num_correct += torch.sum(prediction == y) 
+
+	print(y)
+	print(prediction)
+	print(num_correct)
+
 		if i % 20 == 0 and i != 0:    # print every 20 mini-batches
-			print('epoch: {}, mini_batch: {} loss: {}'.format(epoch, i, running_loss / 20))
+			acc = 100 * num_correct / (20 * batch_size)
+			print('epoch: {}, mini_batch: {} loss: {}, acc: {}'.format(epoch, i, running_loss / 20, acc))
 			training_loss.append(running_loss / 20)
 			running_loss = 0.0
+
 
 	# Saving the model
 	torch.save(net, 'Network_1.pth')
@@ -98,13 +109,6 @@ for epoch in range(num_epochs):
 		
 	# 	# Forward Propogation
 	# 	output = net(image)
-
-	# 	prediction = output.argmax(dim = 1).reshape((-1))
-
-	# 	num_correct += torch.sum(prediction == y) 
-	
-	# acc = 100 * num_correct / 5000
-	# print('Validation accuracy after {} epochs is {}%'.format(epoch, acc))
 
 
 			
