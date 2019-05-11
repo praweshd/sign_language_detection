@@ -7,6 +7,7 @@ import PIL
 from PIL import Image
 import glob
 import os
+from tqdm import tqdm
 
 def thresh_1(R,G, B, r_th, g_th, b_th):
     R1 = R[:] > r_th
@@ -50,7 +51,7 @@ b_th = 20 / 255;
 path = "/home/ecbm6040/dataset_final/train/"
 dirs = os.listdir(path)
 
-for filename in dirs: #glob.glob(path):
+for filename in tqdm(dirs): #glob.glob(path):
     #im1=Image.open(filename)
     im1 = plt.imread("/home/ecbm6040/dataset_final/train/"+filename)
 
@@ -87,7 +88,8 @@ for filename in dirs: #glob.glob(path):
     plt.close()
 
 
-# In[ ]:
+
+
 
 
 
