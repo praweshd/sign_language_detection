@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[1]:
+# In[3]:
 
 
 import cv2
@@ -91,7 +91,7 @@ for filename in glob.glob("*.png"):
     axarr[0].set_title('Original Image')
     axarr[1].imshow(E4,cmap='Greys_r')
     axarr[1].set_title('Thresholded Image')
-    fig1.savefig('Post_{}.png'.format(filename))
+    fig1.savefig('Hands/Post_{}.png'.format(filename))
     plt.tight_layout()
 
 
