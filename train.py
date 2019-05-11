@@ -28,7 +28,7 @@ net.train()
 criterion = nn.CrossEntropyLoss()    # This is the Cross Entropy Loss Function
 
 # Choosing the optimizer and its hyper-parameters
-optimizer = optim.Adam(net.parameters(), lr=1e-4, betas=(0.9, 0.999), eps=1e-08)    # Adaptive Momentum Optimizer
+optimizer = optim.Adam(net.parameters(), lr=1e-5, betas=(0.9, 0.999), eps=1e-08)    # Adaptive Momentum Optimizer
 
 # Hyper-Parameters
 num_epochs = 20
@@ -36,6 +36,8 @@ batch_size = 20
 
 # Stores the loss through out the entire training
 training_loss = []
+# Stores the accuracy through out the entire training
+training_acc = []
 
 train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/train.csv', root_dir='/home/ecbm6040/dataset_final/train/')
 # val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/val.csv', root_dir='/home/ecbm6040/dataset_final/val/')
@@ -84,20 +86,19 @@ for epoch in range(num_epochs):
 		prediction = output.argmax(dim = 1).reshape((-1))
 		num_correct += torch.sum(prediction == y) 
 
-		print(y.shape)
-		print(prediction.shape)
-		print(num_correct)
-
 		if (i % 20 == 0 and i != 0):    # print every 20 mini-batches
-			acc = 100 * num_correct / (20 * batch_size)
+			acc = num_correct / (20 * batch_size)
 			print('epoch: {}, mini_batch: {} loss: {}, acc: {}'.format(epoch, i, running_loss / 20, acc))
 			training_loss.append(running_loss / 20)
+			training_acc.append(acc)
 			running_loss = 0.0
 			num_correct = 0
 
 
 	# Saving the model
-	torch.save(net, 'Network_1.pth')
+	torch.save(net, './pretrained_models/run1/Network_1.pth')
+
+
 	
 	# net.eval()
 
@@ -110,7 +111,15 @@ for epoch in range(num_epochs):
 		
 	# 	# Forward Propogation
 	# 	output = net(image)
+loss_file = open('loss.txt', '+w') # open a file in write mode
+for item in training_loss:    # iterate over the list items
+   loss_file.write(str(item) + '\n') # write to the file
+loss_file.close()   # close the file 
 
+acc_file = open('acc.txt', '+w') # open a file in write mode
+for item in training_acc:    # iterate over the list items
+   acc_file.write(str(item) + '\n') # write to the file
+acc_file.close()   # close the file 
 
 			
 print('Finished Training')
