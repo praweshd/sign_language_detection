@@ -68,8 +68,8 @@ for epoch in range(num_epochs):
 		# Moving the mini-batch onto the GPU
 		image, y = batch['image'].cuda(), batch['labels'].cuda()
 		# image, y = batch['image'], batch['labels']
-		y.resize((batch_size))
-		print(y.size())		
+		y = y.resize((batch_size))
+		
 		# Forward Propogation
 		output = net(image)
 		
