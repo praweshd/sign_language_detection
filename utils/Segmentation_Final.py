@@ -55,7 +55,7 @@ path = "/home/ecbm6040/dataset_final/train/"
 dirs = os.listdir(path)
 
 for filename in dirs: #glob.glob(path):
-    im1=Image.open(filename)
+    #im1=Image.open(filename)
     im1 = plt.imread("/home/ecbm6040/dataset_final/train/"+filename)
 
     # Image shape
