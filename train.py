@@ -87,7 +87,7 @@ for epoch in range(num_epochs):
 		num_correct += torch.sum(prediction == y) 
 
 		if (i % 20 == 0 and i != 0):    # print every 20 mini-batches
-			acc = num_correct / (20 * batch_size)
+			acc = num_correct / (20.0 * batch_size)
 			print('epoch: {}, mini_batch: {} loss: {}, acc: {}'.format(epoch, i, running_loss / 20, acc))
 			training_loss.append(running_loss / 20)
 			training_acc.append(acc)
