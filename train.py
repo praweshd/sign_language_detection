@@ -88,12 +88,12 @@ for epoch in range(num_epochs):
 
 		if (i % 20 == 0 and i != 0):    # print every 20 mini-batches
 			print(num_correct)
-			acc = num_correct / (20.0 * batch_size)
+			acc = num_correct.item() / (20.0 * batch_size)
 			print('epoch: {}, mini_batch: {} loss: {}, acc: {}'.format(epoch, i, running_loss / 20, acc))
 			training_loss.append(running_loss / 20)
 			training_acc.append(acc)
 			running_loss = 0.0
-			num_correct = 0
+			num_correct = 0.0
 
 
 	# Saving the model
