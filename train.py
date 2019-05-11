@@ -46,7 +46,7 @@ train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True
 # val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 # To compute the accuracy
-num_correct = 0
+num_correct = 0.0
 
 # loop over the dataset multiple times
 for epoch in range(num_epochs):  
