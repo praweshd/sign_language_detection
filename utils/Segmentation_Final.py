@@ -50,9 +50,12 @@ r_th = 95 / 255;
 g_th = 40 / 255;
 b_th = 20 / 255;
 
-for filename in glob.glob("/home/ecbm6040/dataset_final/train/*.png"):
+path = "/home/ecbm6040/dataset_final/train/"
+dirs = os.listdir(path)
+
+for filename in dirs #glob.glob(path):
     im1=Image.open(filename)
-    im1 = plt.imread(filename)
+    im1 = plt.imread("/home/ecbm6040/dataset_final/train/"+filename)
 
     # Image shape
     m = im1.shape[0]; n = im1.shape[1]; k = im1.shape[2]
@@ -82,7 +85,7 @@ for filename in glob.glob("/home/ecbm6040/dataset_final/train/*.png"):
     axarr[1].set_title('Thresholded Image')
     
     # Replace "Hands" with directory where you want to save your images
-    fig1.savefig('/home/ecbm6040/dataset_final/train_segmented/Post_{}.png'.format(filename))
+    fig1.savefig('/home/ecbm6040/dataset_final/train_segmented/{}.png'.format(filename))
     plt.tight_layout()
 
 
