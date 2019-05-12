@@ -111,9 +111,9 @@ for epoch in range(num_epochs):
 				
 				# Forward Propogation
 				output = net(image)
-				print(j)
+				#print(j)
 				prediction = output.argmax(dim = 1).reshape((-1))
-				print(y.shape,prediction.shape,(torch.sum(prediction == y)).item())
+				#print(y.shape,prediction.shape,(torch.sum(prediction == y)).item())
 				num_correct_val += torch.sum(prediction == y)
 
 			print("----------------------------------------------------------------------")
