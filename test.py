@@ -42,7 +42,6 @@ num_correct = 0.0
 print("------------------------------------------------------------------")
 
 for i, batch in enumerate(test_dataloader):
-	print(i)
 	# Moving the mini-batch onto the GPU
 	image, y = batch['image'].to(device), batch['labels'].to(device)
 	y = y.resize((y.shape[0]))
@@ -56,10 +55,10 @@ for i, batch in enumerate(test_dataloader):
 	prediction = output.argmax(dim = 1).reshape((-1))
 	num_correct += torch.sum(prediction == y) 
 
-	print(prediction)
-	print(y)
+	print('prediction:', prediction)
+	print('label:', y)
 
-	print(torch.sum(prediction == y).item())
+	print('num_correct:', torch.sum(prediction == y).item())
 
 	if i == 10:
 		break
