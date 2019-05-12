@@ -44,10 +44,11 @@ A = torch.from_numpy(A).to(device)
 print(A.shape)
 
 # Forward Propogation
-output = net(image)
+output = net(A)
 
 prediction = output.argmax(dim = 1).reshape((-1))
 
+print(prediction.shape)
 print(prediction)
 
 
