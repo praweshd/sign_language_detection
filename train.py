@@ -146,27 +146,27 @@ for epoch in range(num_epochs):
 	torch.save(net, './pretrained_models/run2/Network_2.pth')
 
 
-	net.eval()
-	val_acc = []
+	# net.eval()
+	# val_acc = []
 	 
-	num_correct_val = 0
-	for j, val_batch in enumerate(val_dataloader):
-		net.to(device)
+	# num_correct_val = 0
+	# for j, val_batch in enumerate(val_dataloader):
+	# 	net.to(device)
 
-		# Moving the mini-batch onto the GPU
-		image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
+	# 	# Moving the mini-batch onto the GPU
+	# 	image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
 		
-		# Forward Propogation
-		output = net(image)
+	# 	# Forward Propogation
+	# 	output = net(image)
 
-		prediction = output.argmax(dim = 1).reshape((-1))
-		num_correct_val += torch.sum(prediction == y)
+	# 	prediction = output.argmax(dim = 1).reshape((-1))
+	# 	num_correct_val += torch.sum(prediction == y)
 
-	print("----------------------------------------------------------------------")
-	print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 5000.0))
-	print("----------------------------------------------------------------------")
-	val_acc.append(100 * num_correct_val.item() / 5000.0)
-	net.train()
+	# print("----------------------------------------------------------------------")
+	# print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 5000.0))
+	# print("----------------------------------------------------------------------")
+	# val_acc.append(100 * num_correct_val.item() / 5000.0)
+	# net.train()
 
 loss_file = open('./pretrained_models/run2/loss.txt', '+w') # open a file in write mode
 for item in training_loss:    # iterate over the list items
@@ -177,6 +177,11 @@ acc_file = open('./pretrained_models/run2/acc.txt', '+w') # open a file in write
 for item in training_acc:    # iterate over the list items
 	acc_file.write(str(item) + '\n') # write to the file
 acc_file.close()   # close the file 
+
+val_file = open('./pretrained_models/run2/val_acc.txt', '+w') # open a file in write mode
+for item in val_acc:    # iterate over the list items
+	val_file.write(str(item) + '\n') # write to the file
+val_file.close()   # close the file 
 
 			
 print('Finished Training')
