@@ -23,11 +23,19 @@ class ToTensor(object):
         return {'image': torch.from_numpy(image),
                 'labels': torch.from_numpy(np.int64(labels))}
 
+class Rotate(object):
+    """Rotating the images"""
+
+    def __call__(self, sample):
+        image, labels = sample['image'], sample['labels']
+
+        return {'image': transform.rotate(image, angle=15*np.random.uniform(-1,1)),
+                'labels': labels}
 
 
 class dataset_pipeline(Dataset):
 
-    def __init__(self, csv_file, root_dir, transform=transforms.Compose([transforms.RandomRotation(15), ToTensor()])):
+    def __init__(self, csv_file, root_dir, transform=transforms.Compose([Rotate(), ToTensor()])):
         """
         Args:
             csv_file (string): Path to the csv file with annotations.
