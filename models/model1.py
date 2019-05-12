@@ -28,13 +28,17 @@ class Net(nn.Module):
 		self.conv8_bn = nn.BatchNorm2d(512)
 
 		# self.fc1 = nn.Linear(14*12*512, 4096)
-		self.fc1 = nn.Linear(13*11*512, 4096)
-		self.fc1_bn = nn.BatchNorm1d(4096)
+		# self.fc1 = nn.Linear(13*11*512, 4096)
+		# self.fc1_bn = nn.BatchNorm1d(4096)
+
+		self.fc1 = nn.Linear(13*11*512, 1024)
+		self.fc1_bn = nn.BatchNorm1d(1024)
 
 		# self.fc2 = nn.Linear(4096, 512)
 		# self.fc2_bn = nn.BatchNorm1d(512)
 
-		self.fc2 = nn.Linear(4096, 24)
+		# self.fc2 = nn.Linear(4096, 24)
+		self.fc2 = nn.Linear(1024, 24)
 		# self.fc2_bn = nn.BatchNorm1d(24)
 
 		# self.fc3 = nn.Linear(512, 24)
@@ -65,5 +69,5 @@ class Net(nn.Module):
 
 		# x = self.out_act(self.fc3(x))
 		x = self.out_act(self.fc2(x))
-		
+
 		return x
