@@ -29,7 +29,7 @@ class Rotate(object):
     def __call__(self, sample):
         image, labels = sample['image'], sample['labels']
 
-        return {'image': transform.rotate(image, angle=15*np.random.uniform(-1,1)),
+        return {'image': transform.rotate(image, angle=30*np.random.uniform(-1,1)),
                 'labels': labels}
 
 
