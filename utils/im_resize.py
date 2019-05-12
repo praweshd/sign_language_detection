@@ -9,7 +9,8 @@ N = 249
 
 itr = 1
 
-src_dir = os.listdir('/home/ecbm6040/dataset')
+# src_dir = os.listdir('/home/ecbm6040/dataset')
+src_dir = os.listdir('/home/ecbm6040/data_kaggle/asl_alphabet_test/')
 max_itr = len(src_dir)
 
 for im_name in src_dir:
@@ -25,7 +26,7 @@ for im_name in src_dir:
     template[(M-m)//2 : ((M-m)//2 + m), (N-n)//2 : ((N-n)//2 + n), :] = im
 
     # Save the image
-    dst_path = os.path.join('/home/ecbm6040/dataset_final', im_name)
+    dst_path = os.path.join('/home/ecbm6040/data_kaggle/asl_resized', im_name)
     plt.imsave(dst_path, template)
 
     print('{} / {}' .format(itr, max_itr))
