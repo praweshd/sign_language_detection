@@ -127,6 +127,7 @@ for epoch in range(num_epochs):
 	num_correct_val = 0
 	for j, val_batch in enumerate(val_dataloader):
 		net.to(device)
+		print(j)
 
 		# Moving the mini-batch onto the GPU
 		image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
