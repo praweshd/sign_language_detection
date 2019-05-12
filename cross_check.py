@@ -34,7 +34,7 @@ src_dir = os.listdir('/home/ecbm6040/data_kaggle/asl_resized/')
 
 A = np.zeros([len(src_dir), 279, 249, 3])
 
-for i in len(src_dir):
+for i in range(len(src_dir)):
 	A[i, :, :, :] = plt.imread('/home/ecbm6040/data_kaggle/asl_resized/' + src_dir[i])
 
 print(A.shape)
