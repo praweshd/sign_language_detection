@@ -45,9 +45,11 @@ for i, batch in enumerate(test_dataloader):
 	print(i)
 	# Moving the mini-batch onto the GPU
 	image, y = batch['image'].to(device), batch['labels'].to(device)
-	y = y.resize((-1))
-	print(y.shape)
-	print(image.shape)
+	[m, n] = y.shape
+	print(m, n)
+	# y = y.resize((-1))
+	# print(y.shape)
+	# print(image.shape)
 	
 
 	# # Forward Propogation
