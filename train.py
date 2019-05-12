@@ -95,24 +95,26 @@ for epoch in range(num_epochs):
 			running_loss = 0.0
 			num_correct = 0.0
 
-		num_correct_val = 0
-		for j, val_batch in enumerate(val_dataloader):
-			net.to(device)
+		break
 
-			# Moving the mini-batch onto the GPU
-			image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
+		# num_correct_val = 0
+		# for j, val_batch in enumerate(val_dataloader):
+		# 	net.to(device)
+
+		# 	# Moving the mini-batch onto the GPU
+		# 	image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
 			
-			# Forward Propogation
-			output = net(image)
+		# 	# Forward Propogation
+		# 	output = net(image)
 
-			prediction = output.argmax(dim = 1).reshape((-1))
-			num_correct_val += torch.sum(prediction == y)
+		# 	prediction = output.argmax(dim = 1).reshape((-1))
+		# 	num_correct_val += torch.sum(prediction == y)
 
-		print("----------------------------------------------------------------------")
-		print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 5000.0))
-		print("----------------------------------------------------------------------")
-		val_acc.append(100 * num_correct_val.item() / 5000.0)
-	net.train()
+		# print("----------------------------------------------------------------------")
+		# print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 5000.0))
+		# print("----------------------------------------------------------------------")
+		# val_acc.append(100 * num_correct_val.item() / 5000.0)
+		# net.train()
 
 
 	# Saving the model
@@ -122,24 +124,24 @@ for epoch in range(num_epochs):
 	net.eval()
 	val_acc = []
 	 
-	# num_correct_val = 0
-	# for j, val_batch in enumerate(val_dataloader):
-	# 	net.to(device)
+	num_correct_val = 0
+	for j, val_batch in enumerate(val_dataloader):
+		net.to(device)
 
-	# 	# Moving the mini-batch onto the GPU
-	# 	image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
+		# Moving the mini-batch onto the GPU
+		image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
 		
-	# 	# Forward Propogation
-	# 	output = net(image)
+		# Forward Propogation
+		output = net(image)
 
-	# 	prediction = output.argmax(dim = 1).reshape((-1))
-	# 	num_correct_val += torch.sum(prediction == y)
+		prediction = output.argmax(dim = 1).reshape((-1))
+		num_correct_val += torch.sum(prediction == y)
 
-	# print("----------------------------------------------------------------------")
-	# print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 5000.0))
-	# print("----------------------------------------------------------------------")
-	# val_acc.append(100 * num_correct_val.item() / 5000.0)
-	# net.train()
+	print("----------------------------------------------------------------------")
+	print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 5000.0))
+	print("----------------------------------------------------------------------")
+	val_acc.append(100 * num_correct_val.item() / 5000.0)
+	net.train()
 
 loss_file = open('./pretrained_models/run2/loss.txt', '+w') # open a file in write mode
 for item in training_loss:    # iterate over the list items
