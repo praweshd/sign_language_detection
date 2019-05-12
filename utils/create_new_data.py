@@ -12,5 +12,7 @@ val = val.sample(frac=1)
 test = test.sample(frac=1)
 
 train.to_csv('/home/ecbm6040/dataset_update/train.csv', index = False)
+val.to_csv('/home/ecbm6040/dataset_update/val.csv', index = False)
+test.to_csv('/home/ecbm6040/dataset_update/test.csv', index = False)
 # train.to_csv('/home/ecbm6040/dataset_update/train.csv')
 # train.to_csv('/home/ecbm6040/dataset_update/train.csv')
