@@ -32,7 +32,7 @@ optimizer = optim.Adam(net.parameters(), lr=1e-3, betas=(0.9, 0.999), eps=1e-08)
 
 # Hyper-Parameters
 num_epochs = 20
-batch_size = 20
+batch_size = 10
 
 # Stores the loss through out the entire training
 training_loss = []
