@@ -100,10 +100,8 @@ for epoch in range(num_epochs):
 	torch.save(net, './pretrained_models/run2/Network_2.pth')
 
 
-	
-     net.eval()
-     
-     val_acc = []
+	net.eval()
+    val_acc = []
      
      num_correct_val = 0
      for j, val_batch in enumerate(val_dataloader):
