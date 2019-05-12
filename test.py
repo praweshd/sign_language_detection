@@ -32,7 +32,7 @@ testing_loss = []
 batch_size = 10
 
 # Creating the data loader
-test_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/test.csv', root_dir='/home/ecbm6040/dataset_final/test/')
+test_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/test.csv', root_dir='/home/ecbm6040/dataset_final/test_segmented/')
 test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 
