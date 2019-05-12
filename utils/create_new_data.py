@@ -17,4 +17,4 @@ test = pd.read_csv('/home/ecbm6040/dataset_update/test.csv')
 # train.to_csv('/home/ecbm6040/dataset_update/train.csv')
 # train.to_csv('/home/ecbm6040/dataset_update/train.csv')
 
-print(train.label == 24)
+print(train.Label == 24)
