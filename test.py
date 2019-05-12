@@ -60,9 +60,6 @@ for i, batch in enumerate(test_dataloader):
 
 	print('num_correct:', torch.sum(prediction == y).item())
 
-	if i == 10:
-		break
-
 print("----------------------------------------------------------------------")
 print("Testing Accuracy: {}".format(100 * num_correct.item() / 14774.0))
 print("----------------------------------------------------------------------")
