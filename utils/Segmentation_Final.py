@@ -78,6 +78,6 @@ for filename in tqdm(dirs): #glob.glob(path):
     fig1 = plt.gcf()
     plt.imshow(E4,cmap='Grey_r')
     plt.axis('off')
-    plt.imsave('/home/ecbm6040/dataset_final/train_segmented/{}'.format(filename))
+    plt.imsave('/home/ecbm6040/dataset_final/train_segmented/{}'.format(filename),E4,cmap='Greys_r')
     plt.tight_layout()
     plt.close()
