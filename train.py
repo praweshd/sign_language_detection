@@ -107,7 +107,7 @@ for epoch in range(num_epochs):
 				image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
 
 				# image, y = batch['image'], batch['labels']
-				y = y.resize((batch_size))
+				y = y.resize((y.shape[0]))
 				
 				# Forward Propogation
 				output = net(image)
