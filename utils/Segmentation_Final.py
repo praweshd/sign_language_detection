@@ -48,12 +48,12 @@ r_th = 95 / 255;
 g_th = 40 / 255;
 b_th = 20 / 255;
 
-path = "/home/ecbm6040/dataset_final/test/"
+path = "/home/ecbm6040/dataset_final/val/"
 dirs = os.listdir(path)
 
 for filename in tqdm(dirs): #glob.glob(path):
     #im1=Image.open(filename)
-    im1 = plt.imread("/home/ecbm6040/dataset_final/test/"+filename)
+    im1 = plt.imread("/home/ecbm6040/dataset_final/val/"+filename)
 
     # Image shape
     m = im1.shape[0]; n = im1.shape[1]; k = im1.shape[2]
@@ -78,6 +78,6 @@ for filename in tqdm(dirs): #glob.glob(path):
     fig1 = plt.gcf()
     plt.imshow(E4,cmap=plt.get_cmap('gray'))#, vmin=0, vmax=255)#cmap='Grey_r')
     plt.axis('off')
-    plt.imsave('/home/ecbm6040/dataset_final/test_segmented/{}'.format(filename),E4,cmap=plt.get_cmap('gray'))#, vmin=0, vmax=255)#cmap='Greys_r')
+    plt.imsave('/home/ecbm6040/dataset_final/val_segmented/{}'.format(filename),E4,cmap=plt.get_cmap('gray'))#, vmin=0, vmax=255)#cmap='Greys_r')
     plt.tight_layout()
     plt.close()
