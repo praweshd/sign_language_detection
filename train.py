@@ -39,8 +39,8 @@ training_loss = []
 # Stores the accuracy through out the entire training
 training_acc = []
 
-train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/train.csv', root_dir='/home/ecbm6040/dataset_final/train/')
-val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/val.csv', root_dir='/home/ecbm6040/dataset_final/val/')
+train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_update/train.csv', root_dir='/home/ecbm6040/dataset_update/train/')
+val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_update/val.csv', root_dir='/home/ecbm6040/dataset_update/val/')
 
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
@@ -143,7 +143,7 @@ for epoch in range(num_epochs):
 
 
 	# Saving the model
-	torch.save(net, './pretrained_models/run3/Network_3.pth')
+	torch.save(net, './pretrained_models/run4/Network_4.pth')
 
 
 	# net.eval()
@@ -168,17 +168,17 @@ for epoch in range(num_epochs):
 	# val_acc.append(100 * num_correct_val.item() / 5000.0)
 	# net.train()
 
-loss_file = open('./pretrained_models/run3/loss.txt', '+w') # open a file in write mode
+loss_file = open('./pretrained_models/run4/loss.txt', '+w') # open a file in write mode
 for item in training_loss:    # iterate over the list items
 	loss_file.write(str(item) + '\n') # write to the file
 loss_file.close()   # close the file 
 
-acc_file = open('./pretrained_models/run3/acc.txt', '+w') # open a file in write mode
+acc_file = open('./pretrained_models/run4/acc.txt', '+w') # open a file in write mode
 for item in training_acc:    # iterate over the list items
 	acc_file.write(str(item) + '\n') # write to the file
 acc_file.close()   # close the file 
 
-val_file = open('./pretrained_models/run3/val_acc.txt', '+w') # open a file in write mode
+val_file = open('./pretrained_models/run4/val_acc.txt', '+w') # open a file in write mode
 for item in val_acc:    # iterate over the list items
 	val_file.write(str(item) + '\n') # write to the file
 val_file.close()   # close the file 
