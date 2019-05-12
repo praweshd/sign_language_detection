@@ -95,7 +95,7 @@ for epoch in range(num_epochs):
 			running_loss = 0.0
 			num_correct = 0.0
 
-			num_correct_val = 0
+		num_correct_val = 0
 		for j, val_batch in enumerate(val_dataloader):
 			net.to(device)
 
