@@ -39,8 +39,8 @@ training_loss = []
 # Stores the accuracy through out the entire training
 training_acc = []
 
-train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_update/train.csv', root_dir='/home/ecbm6040/dataset_update/train/')
-val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_update/val.csv', root_dir='/home/ecbm6040/dataset_update/val/')
+train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_update/train_2.csv', root_dir='/home/ecbm6040/dataset_update/train/')
+val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_update/val_2.csv', root_dir='/home/ecbm6040/dataset_update/val/')
 
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
