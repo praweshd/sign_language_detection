@@ -76,21 +76,8 @@ for filename in tqdm(dirs): #glob.glob(path):
     E4 = np.multiply(E3,D5)
 
     fig1 = plt.gcf()
-    fig1, axarr = plt.subplots(1,2)
-    axarr[0].imshow(im1)
-    axarr[0].set_title('Original Image')
-    axarr[1].imshow(E4,cmap='Greys_r')
-    axarr[1].set_title('Thresholded Image')
-    
-    # Replace "Hands" with directory where you want to save your images
-    fig1.savefig('/home/ecbm6040/dataset_final/train_segmented/{}'.format(filename))
+    plt.imshow(E4,cmap='Grey_r')
+    plt.axis('off')
+    plt.imsave('/home/ecbm6040/dataset_final/train_segmented/{}'.format(filename))
     plt.tight_layout()
     plt.close()
-
-
-
-
-
-
-
-
