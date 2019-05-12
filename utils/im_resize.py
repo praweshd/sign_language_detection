@@ -15,7 +15,7 @@ max_itr = len(src_dir)
 
 for im_name in src_dir:
     template = np.zeros((M, N, 3))
-    im_path = os.path.join('/home/ecbm6040/dataset', im_name)
+    im_path = os.path.join('/home/ecbm6040/data_kaggle/asl_alphabet_test', im_name)
     
     # Read the image
     im = plt.imread(im_path)
