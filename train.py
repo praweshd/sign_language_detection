@@ -32,25 +32,24 @@ optimizer = optim.Adam(net.parameters(), lr=1e-3, betas=(0.9, 0.999), eps=1e-08)
 
 # Hyper-Parameters
 num_epochs = 20
-batch_size = 20
+batch_size = 10
 
 # Stores the loss through out the entire training
 training_loss = []
 # Stores the accuracy through out the entire training
 training_acc = []
 
-train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/train.csv', root_dir='/home/ecbm6040/dataset_final/train/')
-# val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/val.csv', root_dir='/home/ecbm6040/dataset_final/val/')
+train_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/train.csv', root_dir='/home/ecbm6040/dataset_final/train_segmented/')
+ val_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/val.csv', root_dir='/home/ecbm6040/dataset_final/val_segmented/')
 
 train_dataloader = DataLoader(train_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
-# val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
+val_dataloader = DataLoader(val_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 # To compute the accuracy
 num_correct = 0.0
 
 # loop over the dataset multiple times
-for epoch in range(num_epochs):  
-	
+for epoch in range(num_epochs):
 	print("------------------------------------------------------------------")
 
 	# Ensuring that the model is in the training mode
@@ -98,28 +97,38 @@ for epoch in range(num_epochs):
 
 
 	# Saving the model
-	torch.save(net, './pretrained_models/run1/Network_1.pth')
+	torch.save(net, './pretrained_models/run2/Network_2.pth')
 
 
 	
-	# net.eval()
+     net.eval()
+     
+     val_acc = []
+     
+     num_correct_val = 0
+     for j, val_batch in enumerate(val_dataloader):
+         net.to(device)
 
-	# num_correct = 0
-	# for j, val_batch in enumerate(val_dataloader):
-	# 	net.to(device)
+         # Moving the mini-batch onto the GPU
+         image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
+        
+         # Forward Propogation
+         output = net(image)
 
-	# 	# Moving the mini-batch onto the GPU
-	# 	image, y = val_batch['image'].to(device), val_batch['labels'].to(device)
-		
-	# 	# Forward Propogation
-	# 	output = net(image)
+         prediction = output.argmax(dim = 1).reshape((-1))
+         num_correct_val += torch.sum(prediction == y)
+    print("----------------------------------------------------------------------")
+    print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 5000.0))
+    print("----------------------------------------------------------------------")
+    val_acc.append(100 * num_correct_val.item() / 5000.0))
+    net.train()
 
-loss_file = open('./pretrained_models/run1/loss.txt', '+w') # open a file in write mode
+loss_file = open('./pretrained_models/run2/loss.txt', '+w') # open a file in write mode
 for item in training_loss:    # iterate over the list items
    loss_file.write(str(item) + '\n') # write to the file
 loss_file.close()   # close the file 
 
-acc_file = open('./pretrained_models/run1/acc.txt', '+w') # open a file in write mode
+acc_file = open('./pretrained_models/run2/acc.txt', '+w') # open a file in write mode
 for item in training_acc:    # iterate over the list items
    acc_file.write(str(item) + '\n') # write to the file
 acc_file.close()   # close the file 
