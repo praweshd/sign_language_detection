@@ -65,9 +65,9 @@ for epoch in range(num_epochs):
 		optimizer.zero_grad()
 		 
 		# Moving the mini-batch onto the GPU
-		image, y = batch['image'].cuda(), batch['labels'].cuda()
+		image, y = batch['image'].to(device), batch['labels'].to(device)
 		# image, y = batch['image'], batch['labels']
-		y = y.resize((batch_size))
+		y = y.resize((y.shape[0]))
 		
 		# Forward Propogation
 		output = net(image)
@@ -84,7 +84,7 @@ for epoch in range(num_epochs):
 		# Print Loss
 		running_loss += loss.item()
 
-		prediction = output.argmax(dim = 1).reshape((-1))
+		prediction = output.argmax(dim = 1).reshape((y.shape[0]))
 		num_correct += torch.sum(prediction == y) 
 
 		if (i % 20 == 0 and i != 0):    # print every 20 mini-batches
