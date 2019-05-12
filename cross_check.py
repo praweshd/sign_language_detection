@@ -8,6 +8,11 @@ from utils.batch_loader import dataset_pipeline
 from models.model1 import Net
 from torch.utils.data import Dataset, DataLoader
 from torchvision import transforms, datasets
+import os 
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
 
 # Creating the network
 net = Net()
