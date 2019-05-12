@@ -112,14 +112,14 @@ for epoch in range(num_epochs):
 				# Forward Propogation
 				output = net(image)
 				#print(j)
-				prediction = output.argmax(dim = 1).reshape((-1))
+				prediction = output.argmax(dim = 1).reshape((y.shape[0]))
 				#print(y.shape,prediction.shape,(torch.sum(prediction == y)).item())
 				num_correct_val += torch.sum(prediction == y)
 
 			print("----------------------------------------------------------------------")
-			print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 5000.0))
+			print("Validation Accuracy: {}".format(100 * num_correct_val.item() / 13155.0))
 			print("----------------------------------------------------------------------")
-			val_acc.append(100 * num_correct_val.item() / 5000.0)
+			val_acc.append(100 * num_correct_val.item() / 13155.0)
 			net.train()
 
 		# num_correct_val = 0
