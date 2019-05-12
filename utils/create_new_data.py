@@ -3,9 +3,9 @@ import shutil
 import csv
 import pandas as pd 
 
-train = pd.read_csv('/home/ecbm6040/dataset_update/train1.csv')
-val = pd.read_csv('/home/ecbm6040/dataset_update/val1.csv')
-test = pd.read_csv('/home/ecbm6040/dataset_update/test1.csv')
+train = pd.read_csv('/home/ecbm6040/dataset_update/train.csv')
+val = pd.read_csv('/home/ecbm6040/dataset_update/val.csv')
+test = pd.read_csv('/home/ecbm6040/dataset_update/test.csv')
 
 # train = train.sample(frac=1)
 # val = val.sample(frac=1)
