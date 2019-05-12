@@ -38,5 +38,6 @@ for i in range(len(src_dir)):
 	A[i, :, :, :] = plt.imread('/home/ecbm6040/data_kaggle/asl_resized/' + src_dir[i])
 
 A = A.transpose((0, 3, 1, 2))
+print(np.max(A))
 print(A.shape)
 
