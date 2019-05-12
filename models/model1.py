@@ -31,10 +31,13 @@ class Net(nn.Module):
 		self.fc1 = nn.Linear(13*11*512, 4096)
 		self.fc1_bn = nn.BatchNorm1d(4096)
 
-		self.fc2 = nn.Linear(4096, 512)
-		self.fc2_bn = nn.BatchNorm1d(512)
+		# self.fc2 = nn.Linear(4096, 512)
+		# self.fc2_bn = nn.BatchNorm1d(512)
 
-		self.fc3 = nn.Linear(512, 24)
+		self.fc2 = nn.Linear(4096, 24)
+		# self.fc2_bn = nn.BatchNorm1d(24)
+
+		# self.fc3 = nn.Linear(512, 24)
 
 		self.out_act = nn.Softmax(dim=1)
 
@@ -58,7 +61,9 @@ class Net(nn.Module):
 		x = x.view(-1, 13*11*512)
 
 		x = F.relu(self.fc1_bn(self.fc1(x)))
-		x = F.relu(self.fc2_bn(self.fc2(x)))
-		x = self.out_act(self.fc3(x))
+		# x = F.relu(self.fc2_bn(self.fc2(x)))
 
+		# x = self.out_act(self.fc3(x))
+		x = self.out_act(self.fc2(x))
+		
 		return x
