@@ -54,9 +54,8 @@ for i, batch in enumerate(test_dataloader):
 	prediction = output.argmax(dim = 1).reshape((-1))
 	num_correct += torch.sum(prediction == y) 
 
-
 print("----------------------------------------------------------------------")
-print("Testing Accuracy: {}".format(100 * num_correct.item() / 14774.0)
+print("Testing Accuracy: {}".format(100 * num_correct.item() / 14774.0))
 print("----------------------------------------------------------------------")
 
 
