@@ -143,7 +143,7 @@ for epoch in range(num_epochs):
 
 
 	# Saving the model
-	torch.save(net, './pretrained_models/run4/Network_4.pth')
+	torch.save(net, './pretrained_models/run5/Network_5.pth')
 
 
 	# net.eval()
@@ -168,17 +168,17 @@ for epoch in range(num_epochs):
 	# val_acc.append(100 * num_correct_val.item() / 5000.0)
 	# net.train()
 
-loss_file = open('./pretrained_models/run4/loss.txt', '+w') # open a file in write mode
+loss_file = open('./pretrained_models/run5/loss.txt', '+w') # open a file in write mode
 for item in training_loss:    # iterate over the list items
 	loss_file.write(str(item) + '\n') # write to the file
 loss_file.close()   # close the file 
 
-acc_file = open('./pretrained_models/run4/acc.txt', '+w') # open a file in write mode
+acc_file = open('./pretrained_models/run5/acc.txt', '+w') # open a file in write mode
 for item in training_acc:    # iterate over the list items
 	acc_file.write(str(item) + '\n') # write to the file
 acc_file.close()   # close the file 
 
-val_file = open('./pretrained_models/run4/val_acc.txt', '+w') # open a file in write mode
+val_file = open('./pretrained_models/run5/val_acc.txt', '+w') # open a file in write mode
 for item in val_acc:    # iterate over the list items
 	val_file.write(str(item) + '\n') # write to the file
 val_file.close()   # close the file 
