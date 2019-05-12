@@ -95,7 +95,7 @@ for epoch in range(num_epochs):
 			running_loss = 0.0
 			num_correct = 0.0
 
-		if (i % 20 == 0 and i != 0):
+		if (i % 500 == 0 and i != 0):
 			net.eval()
 			val_acc = []
 			 
