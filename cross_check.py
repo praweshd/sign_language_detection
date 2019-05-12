@@ -43,3 +43,11 @@ A = np.float32(A / 255.0)
 A = torch.from_numpy(A).to(device)
 print(A.shape)
 
+# Forward Propogation
+output = net(image)
+
+prediction = output.argmax(dim = 1).reshape((-1))
+
+print(prediction)
+
+
