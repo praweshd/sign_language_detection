@@ -42,7 +42,7 @@ num_correct = 0.0
 print("------------------------------------------------------------------")
 
 for i, batch in enumerate(test_dataloader):
-	
+	print(i)
 	# Moving the mini-batch onto the GPU
 	image, y = batch['image'].to(device), batch['labels'].to(device)
 
