@@ -76,8 +76,8 @@ for filename in tqdm(dirs): #glob.glob(path):
     E4 = np.multiply(E3,D5)
 
     fig1 = plt.gcf()
-    plt.imshow(E4,cmap=plt.get_cmap('gray'), vmin=0, vmax=255)#cmap='Grey_r')
+    plt.imshow(E4,cmap=plt.get_cmap('gray'))#, vmin=0, vmax=255)#cmap='Grey_r')
     plt.axis('off')
-    plt.imsave('/home/ecbm6040/dataset_final/train_segmented/{}'.format(filename),E4,cmap=plt.get_cmap('gray'), vmin=0, vmax=255)#cmap='Greys_r')
+    plt.imsave('/home/ecbm6040/dataset_final/train_segmented/{}'.format(filename),E4,cmap=plt.get_cmap('gray'))#, vmin=0, vmax=255)#cmap='Greys_r')
     plt.tight_layout()
     plt.close()
