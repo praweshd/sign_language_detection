@@ -46,13 +46,13 @@ for i, batch in enumerate(test_dataloader):
 	# Moving the mini-batch onto the GPU
 	image, y = batch['image'].to(device), batch['labels'].to(device)
 
-	y = y.resize((-1))
+	# y = y.resize((-1))
 
-	# Forward Propogation
-	output = net(image)
+	# # Forward Propogation
+	# output = net(image)
 
-	prediction = output.argmax(dim = 1).reshape((-1))
-	num_correct += torch.sum(prediction == y) 
+	# prediction = output.argmax(dim = 1).reshape((-1))
+	# num_correct += torch.sum(prediction == y) 
 
 print("----------------------------------------------------------------------")
 print("Testing Accuracy: {}".format(100 * num_correct.item() / 14774.0))
