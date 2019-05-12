@@ -18,5 +18,6 @@ test = pd.read_csv('/home/ecbm6040/dataset_update/test.csv')
 # train.to_csv('/home/ecbm6040/dataset_update/train.csv')
 
 print(train.loc[train.Label == 24])
-train.loc[train.Label == 24].Label = 9
+# train.loc[train.Label == 24].Label = 9
+train.Label.replace(24, 9)
 print(train.loc[train.Label == 9])
