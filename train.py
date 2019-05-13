@@ -28,7 +28,7 @@ net.train()
 criterion = nn.CrossEntropyLoss()    # This is the Cross Entropy Loss Function
 
 # Choosing the optimizer and its hyper-parameters
-optimizer = optim.Adam(net.parameters(), lr=1e-4, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.01)    # Adaptive Momentum Optimizer
+optimizer = optim.Adam(net.parameters(), lr=1e-3, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.01)    # Adaptive Momentum Optimizer
 scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.1)
 
 # Hyper-Parameters
@@ -146,7 +146,7 @@ for epoch in range(num_epochs):
 
 
 	# Saving the model
-	torch.save(net, './pretrained_models/run6/Network_6.pth')
+	torch.save(net, './pretrained_models/run7/Network_7.pth')
 
 
 	# net.eval()
@@ -171,17 +171,17 @@ for epoch in range(num_epochs):
 	# val_acc.append(100 * num_correct_val.item() / 5000.0)
 	# net.train()
 
-loss_file = open('./pretrained_models/run6/loss.txt', '+w') # open a file in write mode
+loss_file = open('./pretrained_models/run7/loss.txt', '+w') # open a file in write mode
 for item in training_loss:    # iterate over the list items
 	loss_file.write(str(item) + '\n') # write to the file
 loss_file.close()   # close the file 
 
-acc_file = open('./pretrained_models/run6/acc.txt', '+w') # open a file in write mode
+acc_file = open('./pretrained_models/run7/acc.txt', '+w') # open a file in write mode
 for item in training_acc:    # iterate over the list items
 	acc_file.write(str(item) + '\n') # write to the file
 acc_file.close()   # close the file 
 
-val_file = open('./pretrained_models/run6/val_acc.txt', '+w') # open a file in write mode
+val_file = open('./pretrained_models/run7/val_acc.txt', '+w') # open a file in write mode
 for item in val_acc:    # iterate over the list items
 	val_file.write(str(item) + '\n') # write to the file
 val_file.close()   # close the file 
