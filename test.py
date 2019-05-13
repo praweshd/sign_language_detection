@@ -13,7 +13,7 @@ from torchvision import transforms, datasets
 net = Net()
 
 # Loading the saved network parameters
-net = torch.load('./pretrained_models/run2/Network_2.pth')
+net = torch.load('./pretrained_models/run7/Network_7.pth')
 
 # Checking if there is a GPU available
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
@@ -29,10 +29,10 @@ net.eval()
 testing_loss = []
 
 # Hyper-Parameters
-batch_size = 10
+batch_size = 20
 
 # Creating the data loader
-test_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/test.csv', root_dir='/home/ecbm6040/dataset_final/test/')
+test_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/test_2.csv', root_dir='/home/ecbm6040/dataset_update/test/')
 test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
 
 
@@ -61,7 +61,7 @@ for i, batch in enumerate(test_dataloader):
 	print('num_correct:', torch.sum(prediction == y).item())
 
 print("----------------------------------------------------------------------")
-print("Testing Accuracy: {}".format(100 * num_correct.item() / 14774.0))
+print("Testing Accuracy: {}".format(100 * num_correct.item() / 13888.0))
 print("----------------------------------------------------------------------")
 
 
