@@ -29,6 +29,7 @@ criterion = nn.CrossEntropyLoss()    # This is the Cross Entropy Loss Function
 
 # Choosing the optimizer and its hyper-parameters
 optimizer = optim.Adam(net.parameters(), lr=1e-4, betas=(0.9, 0.999), eps=1e-08, weight_decay=0.01)    # Adaptive Momentum Optimizer
+scheduler = optim.lr_scheduler.StepLR(optimizer, step_size=2, gamma=0.1)
 
 # Hyper-Parameters
 num_epochs = 20
@@ -51,6 +52,8 @@ num_correct = 0.0
 # loop over the dataset multiple times
 for epoch in range(num_epochs):
 	print("------------------------------------------------------------------")
+
+	scheduler.step()
 
 	# Ensuring that the model is in the training mode
 	net.train()
