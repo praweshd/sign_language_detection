@@ -9,7 +9,7 @@ To train your own model using our network, run:
 python train.py
 ```
 
-WE do not have our saved model uploaded, so once you have trained your model, you can compute the test accuracy by running:
+We do not have our saved model uploaded, so once you have trained your model, you can compute the test accuracy by running:
 ```bash
 python test.py
 ```
