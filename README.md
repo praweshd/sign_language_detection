@@ -15,3 +15,5 @@ python test.py
 ```
 
 Please check the paths to data, saved models etc inside the train.py and test.py files as this may change on your system. We have used absolute paths, and therefore, you may not be able to run this code directly on your set up. 
+
+Please also read our final report if you would like know details on the project. 
