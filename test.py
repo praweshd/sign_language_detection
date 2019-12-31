@@ -15,14 +15,14 @@ net = Net()
 # Loading the saved network parameters
 net = torch.load('./pretrained_models/run7/Network_7.pth')
 
-# Checking if there is a GPU available
+# Check if there is a GPU available
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 print('Device being used =', device)
 
-# Transferring the network onto the GPU
+# Transfer the network onto the GPU
 net.to(device)
 
-# Ensuring that the model is in the training mode
+# Ensure that the model is in the training mode
 net.eval()
 
 # Stores the loss through out the entire training
@@ -34,7 +34,6 @@ batch_size = 20
 # Creating the data loader
 test_dataset = dataset_pipeline(csv_file='/home/ecbm6040/dataset_final/test_2.csv', root_dir='/home/ecbm6040/dataset_update/test/')
 test_dataloader = DataLoader(test_dataset, batch_size=batch_size, shuffle=True, num_workers=4)
-
 
 # To compute the accuracy
 num_correct = 0.0
@@ -63,18 +62,4 @@ for i, batch in enumerate(test_dataloader):
 print("----------------------------------------------------------------------")
 print("Testing Accuracy: {}".format(100 * num_correct.item() / 13888.0))
 print("----------------------------------------------------------------------")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
